@@ -40,7 +40,7 @@ def alm_login():
         cookies['LWSSO_COOKIE_KEY'] = LWSSO_COOKIE_KEY
         print('logged in succesfully')
     response = requests.post(qcSessionEndPoint, headers=headers, cookies=cookies)
-    if response.status_code == 200 | response.status_code == 201:
+    if response.status_code == 200 or response.status_code == 201:
         cookieName = response.headers.get('Set-Cookie').split(",")[1]
         QCSession = cookieName[cookieName.index("=") + 1: cookieName.index(";")]
         cookies['QCSession'] = QCSession
